@@ -1,0 +1,119 @@
+<html>
+<head>
+  <style>
+    /* Add your CSS styles here */
+    td{
+      width: 25px;
+      height: 25px;
+      border: 1px solid #ccc;
+    }
+    table{
+        background-color: rgb(139, 139, 139);
+        color:black;
+        text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="minesweeper"></div>
+  <script>
+    // Define the game variables here
+    const ROWS = 9;
+    const COLS = 6;
+    const MINES = 9;
+
+    // Create an empty 2D array to store the game state
+    let game = new Array(ROWS);
+    for (let i = 0; i < ROWS; i++) {
+      game[i] = new Array(COLS);
+    }
+
+    // Function to reveal a cell
+    function reveal(row, col) {
+      // Check if the cell is already revealed
+      if (game[row][col].revealed) return;
+      // Check if the cell is a mine
+      if (game[row][col].mine) {
+        // Game over
+        alert("Game over!");
+        return;
+      }
+      // Reveal the cell
+      game[row][col].revealed = true;
+      // Update the number of mines around the cell
+      updateMines(row, col);
+      // Update the UI
+      updateUI(row, col);
+    }
+
+    // Function to update the number of mines around a cell
+    function updateMines(row, col) {
+      // Iterate over the neighboring cells
+      for (let i = -1; i <= 1; i++) {
+        for (let j = -1; j <= 1; j++) {
+          // Check if the cell is inside the grid
+          if (row + i >= 0 && row + i < ROWS && col + j >= 0 && col + j < COLS) {
+            // Increase the number of mines if the cell is a mine
+            if (game[row + i][col + j].mine) {
+              game[row][col].mines++;
+            }
+          }
+        }
+      }
+    }
+
+    // Function to update the UI
+    function updateUI(row, col) {
+      let cell = document.getElementById(row + "-" + col);
+      // Check if the cell is a mine
+      if (game[row][col].mine) {
+        cell.innerHTML = "*";
+      } else {
+        cell.innerHTML = game[row][col].mines;
+      }
+    }
+
+    // Initialize the game
+    function init() {
+      // Create the table
+      let table = document.createElement("table");
+      let tbody = document.createElement("tbody");
+      for (let row = 0; row < ROWS; row++) {
+        let tr = document.createElement("tr");
+        for (let col = 0; col < COLS; col++) {
+          let td = document.createElement("td");
+          td.id = row + "-" + col;
+          td.onclick = function() {
+            reveal(row, col);
+          };
+          tr.appendChild(td);
+          game[row][col] = {
+revealed: false,
+mine: false,
+mines: 0
+};
+}
+tbody.appendChild(tr);
+}
+table.appendChild(tbody);
+document.getElementById("minesweeper").appendChild(table);
+
+
+  // Place the mines randomly
+  let minesPlaced = 0;
+  while (minesPlaced < MINES) {
+    let row = Math.floor(Math.random() * ROWS);
+    let col = Math.floor(Math.random() * COLS);
+    if (!game[row][col].mine) {
+      game[row][col].mine = true;
+      minesPlaced++;
+    }
+  }
+}
+
+// Start the game
+init();
+  </script>
+</body>
+</html>
