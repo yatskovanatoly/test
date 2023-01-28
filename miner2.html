@@ -1,17 +1,31 @@
 <html>
 <head>
   <style>
+    
     /* Add your CSS styles here */
-    td{
-      width: 25px;
-      height: 25px;
-      border: 1px solid #ccc;
-    }
-    table{
-        background-color: rgb(139, 139, 139);
-        color:black;
-        text-align: center;
-    }
+  
+    table {
+  margin: auto;
+  background-color: gray;
+}
+
+td {
+  text-align: center;
+  font-size: 20px;
+  width: 25px;
+  height: 30px;
+  border: 1px solid #ccc;
+}
+
+.revealed {
+  background-color: #eee;
+}
+
+.mine {
+  background-color: red;
+  color: white;
+}
+
 
   </style>
 </head>
@@ -20,7 +34,7 @@
   <script>
     // Define the game variables here
     const ROWS = 9;
-    const COLS = 6;
+    const COLS = 9;
     const MINES = 9;
 
     // Create an empty 2D array to store the game state
@@ -33,11 +47,13 @@
     function reveal(row, col) {
       // Check if the cell is already revealed
       if (game[row][col].revealed) return;
-      // Check if the cell is a mine
-      if (game[row][col].mine) {
+      // Check if the cell is a minew
+     if (game[row][col].mine) {
         // Game over
-        alert("Game over!");
-        return;
+        document.getElementById(row + "-" + col).classList.add("mine");
+        document.getElementById(row + "-" + col).innerHTML = "*";
+        document.getElementById(row + "-" + col).addEventListener('mouseup', function () {alert("Game over!")});
+        //setTimeout(() => {alert("Game over!");}, 50)
       }
       // Reveal the cell
       game[row][col].revealed = true;
@@ -63,14 +79,17 @@
       }
     }
 
-    // Function to update the UI
-    function updateUI(row, col) {
+    
+// Function to update the UI
+function updateUI(row, col) {
       let cell = document.getElementById(row + "-" + col);
       // Check if the cell is a mine
       if (game[row][col].mine) {
         cell.innerHTML = "*";
+        cell.classList.add("mine");
       } else {
         cell.innerHTML = game[row][col].mines;
+        cell.classList.add("revealed");
       }
     }
 
