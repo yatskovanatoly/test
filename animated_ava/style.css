@@ -1,0 +1,96 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font: imnherit;
+}
+
+html {
+    color-scheme: dark light;
+}
+
+body {
+    background-color: pink;
+    font-size: 1.25rem;
+    line-height: 1.6rem;
+    padding: 20rem 0;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.person {
+    position: relative;
+    max-width: 15rem;
+    margin-inline: auto;
+}
+
+.person__container {
+    --transform-speed: 200ms;
+    /* background: pink; */
+    aspect-ratio: 1/1.35;
+    display: grid;
+    align-items: end;
+    border-radius: 0 0 100vw 100vw;
+    overflow: hidden;
+    transition: transform var(--transform-speed) ease-in-out;
+    
+}
+
+.person__circle {
+    position: absolute;
+    inset: auto 0 0;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin-inline: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: filter 0.5s;
+    border-bottom: 1px solid black;
+}
+
+.person__img {
+    position: relative;
+    bottom: -80px;
+    z-index: 2;
+    transform: scale(1.1);
+    transition: transform calc(var(--transform-speed) * 1.5) ease-in-out, filter calc(var(--transform-speed) * 1.5) ease-in-out;
+}
+
+.overlay {
+    position:absolute;
+    width: 100%;
+    height: 75%;
+    z-index: 5;
+}
+
+.person__container .person__circle{
+    filter: blur(0.5px);
+}
+/* .person__container:hover .person__circle{
+    filter: blur(1.5px);
+} */
+
+
+.person__container:hover {
+    transform: scale(1.2);
+    }
+
+.person__container .person__img {
+        /* transform: translateY(-3rem); */
+        filter: drop-shadow(0 0 5px #272737);
+    }    
+.person__container:hover .person__img {
+    transform: translateY(-3rem);
+    filter: drop-shadow(0 0 10px #272737);
+}
+
+/* .person__container:hover .person__img {
+background: linear-gradient(90deg,red,white);
+-webkit-background-clip: content-box;
+} */
