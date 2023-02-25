@@ -83,11 +83,10 @@ img {
 
 .person__container .person__img {
         /* transform: translateY(-3rem); */
-        filter: drop-shadow(0 0 5px #272737);
+        filter: drop-shadow(0 0 3px #272737);
     }    
 .person__container:hover .person__img {
     transform: translateY(-3rem);
-    filter: drop-shadow(0 0 10px #272737);
 }
 
 /* .person__container:hover .person__img {
