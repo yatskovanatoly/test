@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="./styles.css">
+    <style></style>
+    <script></script>
+  </head>
+  <body>
+    <header class="header">
+      <h1></h1>
+    </header>
+    <p></p>
+    <div></div>
+  </body>
+  <script></script>
+</html>
