@@ -5,7 +5,7 @@
 * {
     margin: 0;
     padding: 0;
-    font: imnherit;
+    font: inherit;
 }
 
 html {
@@ -88,8 +88,3 @@ img {
 .person__container:hover .person__img {
     transform: translateY(-3rem);
 }
-
-/* .person__container:hover .person__img {
-background: linear-gradient(90deg,red,white);
--webkit-background-clip: content-box;
-} */
