@@ -36,21 +36,24 @@
     orange
   );
   background-size: 888vw;
-/*   background-size: clamp; */
   animation: rainbow 5s infinite linear;
   background-clip: text;
   -webkit-background-clip: text;
   color: rgba(0, 0, 0, 1);
   font-size: clamp(50px, 30vw, 300px);
-  transition: color 0.5s;
+  transition: color 0.5s, transform 250ms, filter 250ms;
   text-transform: uppercase;
   font-weight: bold;
   user-select: none;
   margin: clamp(-24px, -3vw, -10px) 0;
 }
-/* #:hover {
-    color:rgba(0,0,0,0);
-} */
+
+.text:hover {
+  color: rgba(0, 0, 0, 0);
+  transform: translate(12px, -10%);
+  filter: drop-shadow(20px 20px 10px orange);
+}
+
 
 @keyframes rainbow {
   0% {
