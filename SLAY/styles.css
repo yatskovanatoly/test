@@ -40,7 +40,7 @@
   background-clip: text;
   -webkit-background-clip: text;
   color: rgba(0, 0, 0, 1);
-  font-size: clamp(50px, 30vw, 300px);
+  font-size: clamp(50px, 15vw, 300px);
   transition: color 0.5s, transform 250ms, filter 250ms;
   text-transform: uppercase;
   font-weight: bold;
@@ -51,7 +51,7 @@
 .text:hover {
   color: rgba(0, 0, 0, 0);
   transform: translate(12px, -10%);
-  filter: drop-shadow(20px 20px 10px orange);
+  filter: drop-shadow(-20px 20px 10px orange);
 }
 
 
