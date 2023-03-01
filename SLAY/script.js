@@ -44,10 +44,13 @@ function updateText() { // ОГРОМНАЯ ФУНКЦИЯ ОБНОВЛЕНИЯ 
     // console.log(words[randomIndex]) 
     // console.log(lastWord)
   }
-
-  do {
+  randomIndex = getRI(); // иначе почти всё время 0, индекс не обновляется
+  
+   while (lastWord == (words[randomIndex])) {
+    console.log('REPETITION FOUND: ' + lastWord)
     randomIndex = getRI() // получаем индекс
-  } while (lastWord == (words[randomIndex]));
+  };
+
 
   if (words.length > 0) {
     // смотрим есть ли что-то в массиве слов и не совпадает ли выбранное слово с последним использованным
